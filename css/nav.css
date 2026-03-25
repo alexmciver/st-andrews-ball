@@ -1,0 +1,304 @@
+/* Navigation, CTAs, and footer route links — active page, hover, focus */
+
+.site-header a,
+.mobile-menu-panel a {
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* ── Logo / site title ── */
+.nav-mark {
+    position: relative;
+    display: inline-block;
+    transition:
+        color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        letter-spacing 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-mark::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.12em;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transform: scaleX(0.6);
+    transition:
+        opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-mark:hover {
+    color: #fff;
+    letter-spacing: 0.14em;
+    transform: translateY(-1px);
+}
+
+.nav-mark:hover::after {
+    opacity: 0.85;
+    transform: scaleX(1);
+}
+
+.nav-mark[aria-current="page"] {
+    color: var(--paper);
+}
+
+.nav-mark[aria-current="page"]::after {
+    opacity: 1;
+    transform: scaleX(1);
+    background: linear-gradient(90deg, transparent, var(--gold-pale), transparent);
+}
+
+.nav-mark[aria-current="page"]:hover {
+    letter-spacing: 0.12em;
+    transform: none;
+}
+
+/* ── Desktop nav (Ball Info / Tickets) ── */
+.nav-links a {
+    position: relative;
+    display: inline-block;
+    padding: 8px 0;
+    border-bottom: 2px solid transparent;
+    transition:
+        color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+        text-shadow 0.35s ease;
+}
+
+.nav-links a::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--blue), var(--gold-pale));
+    border-radius: 1px;
+    transform: translateX(-50%);
+    transition: width 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-links a:not([aria-current="page"]):hover,
+.nav-links a:not([aria-current="page"]):focus-visible {
+    color: var(--paper);
+    transform: translateY(-1px);
+    text-shadow: 0 0 24px rgba(200, 169, 110, 0.25);
+}
+
+.nav-links a:not([aria-current="page"]):hover::before,
+.nav-links a:not([aria-current="page"]):focus-visible::before {
+    width: 100%;
+}
+
+.nav-links a[aria-current="page"] {
+    color: var(--paper);
+    border-bottom-color: var(--blue);
+    font-weight: 400;
+}
+
+.nav-links a[aria-current="page"]::before {
+    width: 100%;
+    background: var(--blue);
+    opacity: 0.9;
+}
+
+.nav-links a[aria-current="page"]:hover {
+    transform: none;
+}
+
+/* ── Header Apply Now ── */
+.nav-cta {
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    transition:
+        background 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.35s ease,
+        color 0.35s ease,
+        transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-cta::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.08) 45%, transparent 55%);
+    transform: translateX(-120%);
+    transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-cta:hover,
+.nav-cta:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(27, 95, 175, 0.35);
+}
+
+.nav-cta:hover::before,
+.nav-cta:focus-visible::before {
+    transform: translateX(120%);
+}
+
+/* ── Mobile nav panel ── */
+.mobile-menu-panel a {
+    position: relative;
+    border-radius: var(--radius-s);
+    border: 1px solid transparent;
+    transition:
+        background 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.35s ease,
+        color 0.3s ease,
+        transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+        text-shadow 0.35s ease;
+}
+
+.mobile-menu-panel a:not([aria-current="page"]):hover,
+.mobile-menu-panel a:not([aria-current="page"]):focus-visible {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(27, 95, 175, 0.35);
+    transform: translateX(4px);
+}
+
+.mobile-menu-panel a[aria-current="page"] {
+    border-color: rgba(27, 95, 175, 0.55);
+    background: rgba(27, 95, 175, 0.18);
+    color: var(--paper);
+    box-shadow: inset 0 0 0 1px rgba(200, 169, 110, 0.12);
+}
+
+.mobile-menu-panel a[aria-current="page"]::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    bottom: auto;
+    width: 3px;
+    height: 60%;
+    transform: translateY(-50%);
+    background: linear-gradient(180deg, var(--gold), var(--blue));
+    border-radius: 0 2px 2px 0;
+}
+
+.mobile-menu-panel .mobile-cta::after {
+    display: none;
+}
+
+/* ── Footer: internal routes only (not mailto / tel / external) ── */
+nav.footer-col a[href$=".html"] {
+    position: relative;
+    display: block;
+    transition:
+        color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+nav.footer-col a[href$=".html"]::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0.15em;
+    width: 0;
+    height: 1px;
+    background: var(--gold-pale);
+    opacity: 0.7;
+    transition: width 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+nav.footer-col a[href$=".html"]:not([aria-current="page"]):hover,
+nav.footer-col a[href$=".html"]:not([aria-current="page"]):focus-visible {
+    color: var(--paper);
+    transform: translateX(3px);
+}
+
+nav.footer-col a[href$=".html"]:not([aria-current="page"]):hover::after,
+nav.footer-col a[href$=".html"]:not([aria-current="page"]):focus-visible::after {
+    width: 100%;
+}
+
+nav.footer-col a[href$=".html"][aria-current="page"] {
+    color: var(--paper);
+    font-weight: 400;
+}
+
+nav.footer-col a[href$=".html"][aria-current="page"]::after {
+    width: 100%;
+    background: var(--blue-pale);
+    opacity: 1;
+}
+
+/* Contact / external: underline only on hover */
+.footer-col:not(nav) a[href^="mailto:"],
+.footer-col:not(nav) a[href^="tel:"],
+.footer-col a[href^="http"] {
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition:
+        color 0.3s ease,
+        border-color 0.25s ease,
+        text-shadow 0.2s ease;
+}
+
+.footer-col:not(nav) a[href^="mailto:"]:hover,
+.footer-col:not(nav) a[href^="tel:"]:hover,
+.footer-col a[href^="http"]:hover {
+    color: var(--paper);
+    border-bottom-color: rgba(200, 169, 110, 0.45);
+}
+
+/* Hero buttons as links */
+.hero-btns .btn-primary,
+.hero-btns .btn-outline {
+    text-decoration: none;
+    text-align: center;
+    transition:
+        transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+        background 0.35s ease,
+        border-color 0.35s ease,
+        color 0.35s ease;
+}
+
+.hero-btns .btn-primary:hover,
+.hero-btns .btn-primary:focus-visible {
+    transform: translateY(-2px) scale(1.02);
+}
+
+.hero-btns .btn-outline:hover,
+.hero-btns .btn-outline:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .nav-mark,
+    .nav-mark::after,
+    .nav-links a,
+    .nav-links a::before,
+    .nav-cta,
+    .nav-cta::before,
+    .mobile-menu-panel a,
+    nav.footer-col a[href$=".html"],
+    nav.footer-col a[href$=".html"]::after,
+    .hero-btns .btn-primary,
+    .hero-btns .btn-outline {
+        transition-duration: 0.01ms !important;
+    }
+
+    .nav-mark:hover,
+    .nav-links a:not([aria-current="page"]):hover,
+    .mobile-menu-panel a:not([aria-current="page"]):hover,
+    .hero-btns .btn-primary:hover,
+    .hero-btns .btn-outline:hover {
+        transform: none;
+    }
+
+    .nav-cta:hover::before,
+    .nav-cta:focus-visible::before {
+        transform: none;
+    }
+}

@@ -1,0 +1,282 @@
+/* Premium finish — depth, grain, typography, restrained luxury */
+
+:root {
+    --lux-shadow-nav: 0 1px 0 rgba(255, 255, 255, 0.06), 0 8px 32px rgba(0, 0, 0, 0.45),
+        0 24px 64px rgba(0, 0, 0, 0.35);
+    --lux-shadow-float: 0 20px 50px rgba(0, 0, 0, 0.5), 0 4px 16px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    --lux-edge: linear-gradient(
+        90deg,
+        transparent,
+        rgba(200, 169, 110, 0.22) 20%,
+        rgba(200, 169, 110, 0.35) 50%,
+        rgba(200, 169, 110, 0.22) 80%,
+        transparent
+    );
+    --ease-lux: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: geometricPrecision;
+}
+
+body {
+    position: relative;
+}
+
+/* Subtle film grain — sits above page, below skip link */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9990;
+    opacity: 0.045;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body::after {
+        opacity: 0.02;
+    }
+}
+
+/* Header CTA — jewellery button */
+.nav-cta {
+    box-shadow: 0 2px 12px rgba(27, 95, 175, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    transition: box-shadow 0.45s var(--ease-lux), transform 0.35s var(--ease-lux), background 0.35s ease;
+}
+
+.nav-cta:hover,
+.nav-cta:focus-visible {
+    box-shadow: 0 6px 28px rgba(27, 95, 175, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* Ribbon — crisper type */
+.ribbon {
+    letter-spacing: 0.2em;
+    font-weight: 400;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08) inset, 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* Header — layered depth + fine top highlight */
+.site-header {
+    box-shadow: var(--lux-shadow-nav);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    background: linear-gradient(
+            180deg,
+            rgba(10, 14, 22, 0.97) 0%,
+            rgba(8, 11, 17, 0.94) 100%
+        ),
+        linear-gradient(180deg, rgba(200, 169, 110, 0.06) 0%, transparent 100%);
+    background-size: 100% 100%, 100% 3px;
+    background-repeat: no-repeat;
+    background-position: 0 0, 0 0;
+}
+
+.site-header::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 1px;
+    background: var(--lux-edge);
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* Hero — more cinematic title treatment */
+.hero-content {
+    filter: drop-shadow(0 4px 24px rgba(0, 0, 0, 0.35));
+}
+
+.hero-title {
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.45), 0 12px 48px rgba(0, 0, 0, 0.55),
+        0 0 1px rgba(255, 255, 255, 0.08);
+    font-feature-settings: "kern" 1, "liga" 1;
+    letter-spacing: 0.04em;
+}
+
+.hero-title em {
+    letter-spacing: 0.12em;
+}
+
+.hero-meta,
+.hero-eyebrow {
+    text-shadow: 0 1px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* Primary / outline buttons — depth and metal edge */
+.btn-primary {
+    box-shadow: 0 4px 20px rgba(20, 77, 150, 0.45), 0 1px 0 rgba(255, 255, 255, 0.12) inset,
+        0 12px 40px rgba(27, 95, 175, 0.25);
+    border-radius: var(--radius-s);
+    transition: transform 0.45s var(--ease-lux), box-shadow 0.45s var(--ease-lux), background 0.35s ease;
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+    box-shadow: 0 8px 36px rgba(27, 95, 175, 0.55), 0 1px 0 rgba(255, 255, 255, 0.15) inset,
+        0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.btn-outline {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    transition: border-color 0.35s ease, box-shadow 0.45s var(--ease-lux), transform 0.35s var(--ease-lux);
+}
+
+.btn-outline:hover,
+.btn-outline:focus-visible {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.45);
+}
+
+/* Keyline strip — jewelled cells */
+.keyline-strip {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.ks-item {
+    transition: background 0.5s var(--ease-lux);
+}
+
+.ks-val {
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
+    letter-spacing: 0.06em;
+}
+
+/* Section headings — editorial precision */
+.section-header h2,
+.about-text h2,
+.venue-text h2 {
+    font-feature-settings: "kern" 1, "liga" 1;
+    letter-spacing: 0.02em;
+}
+
+/* About / venue frames */
+.about-img-frame,
+.venue-grid {
+    box-shadow: var(--lux-shadow-float);
+    border: 1px solid rgba(200, 169, 110, 0.12);
+}
+
+/* Includes grid — museum plinth */
+.inc-item {
+    transition: transform 0.45s var(--ease-lux), background 0.45s var(--ease-lux),
+        box-shadow 0.45s var(--ease-lux);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.inc-item:hover {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+/* Gallery — glass edge on tiles */
+.g-item {
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+/* Tickets — alert bar */
+.tix-alert {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+    border-bottom: 1px solid rgba(27, 95, 175, 0.35);
+}
+
+/* Ticket cards */
+.tix-card {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: var(--lux-shadow-float);
+    transition: transform 0.45s var(--ease-lux), border-color 0.45s var(--ease-lux),
+        box-shadow 0.5s var(--ease-lux);
+}
+
+.tix-card.featured {
+    border-color: rgba(27, 95, 175, 0.45);
+    box-shadow: var(--lux-shadow-float), 0 0 48px rgba(27, 95, 175, 0.12);
+}
+
+.tix-card:hover {
+    box-shadow: 0 28px 64px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Form — boutique inputs */
+.tix-form {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: var(--lux-shadow-float);
+}
+
+.form-field input,
+.form-field select {
+    transition: border-color 0.35s ease, box-shadow 0.45s var(--ease-lux);
+}
+
+.form-field input:focus,
+.form-field select:focus {
+    box-shadow: 0 0 0 1px rgba(200, 169, 110, 0.15), 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.form-submit {
+    box-shadow: 0 6px 28px rgba(20, 77, 150, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.form-submit:hover {
+    box-shadow: 0 10px 40px rgba(27, 95, 175, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* Page heroes (info / tickets) */
+.page-hero {
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.45);
+}
+
+.page-hero img {
+    filter: brightness(0.28) saturate(0.72) contrast(1.05);
+}
+
+.page-hero-content h1 {
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6);
+    font-feature-settings: "kern" 1, "liga" 1;
+}
+
+/* Info blocks */
+.info-block {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.09);
+}
+
+.d-item {
+    transition: background 0.35s var(--ease-lux);
+}
+
+/* Footer — gala curtain (keep existing ::before/::after from styles.css) */
+.site-footer {
+    border-top-color: rgba(200, 169, 110, 0.22);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 -1px 0 rgba(200, 169, 110, 0.12);
+}
+
+.footer-brand .mark {
+    letter-spacing: 0.12em;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Selection */
+::selection {
+    background: rgba(27, 95, 175, 0.45);
+    text-shadow: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn-primary,
+    .btn-outline,
+    .inc-item,
+    .tix-card,
+    .form-field input,
+    .form-field select {
+        transition-duration: 0.01ms !important;
+    }
+}

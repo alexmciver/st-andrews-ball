@@ -2,7 +2,7 @@
   "name": "st-andrews-ball",
   "private": true,
   "scripts": {
-    "minify:css": "node scripts/minify-inline-css.mjs"
+    "minify:css": "node scripts/minify-css.mjs"
   },
   "devDependencies": {
     "clean-css": "^5.3.3"
